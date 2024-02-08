@@ -38,7 +38,7 @@ outputcells.o: outputcells.cpp outputcells.h celltype.h
 test_init.o: test_init.cpp fillcells.h celltype.h
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
 
-test_init: test.o fillcells.o	
+test_init: test_init.o fillcells.o	
 	$(CXX) $^ -o $@ -lCatch2Main -lCatch2
 
 run: gameof1d
