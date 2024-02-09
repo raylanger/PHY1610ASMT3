@@ -6,7 +6,7 @@ CXX=g++
 CXXFLAGS=-O3 -march=native
 OBJS=gameof1d.o fillcells.o updatecells.o outputcells.o
 
-all: gameof1d originalgameof1d test_init test_output
+all: gameof1d originalgameof1d test_init test_output test_update
 
 integrated_test: originaltestoutput.txt testoutput.txt
 	diff originaltestoutput.txt testoutput.txt
@@ -45,6 +45,12 @@ test_output.o: test_output.cpp outputcells.h celltype.h
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
 
 test_output: test_output.o outputcells.o
+	$(CXX) $^ -o $@ -lCatch2Main -lCatch2
+
+test_update.o: test_update.cpp updatecells.h celltype.h 
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+
+test_update: test_update.o updatecells.o
 	$(CXX) $^ -o $@ -lCatch2Main -lCatch2
 
 run: gameof1d
