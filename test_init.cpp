@@ -1,6 +1,5 @@
 #include "fillcells.h"
 #include <iostream>
-#include <fstream>
 #include <catch2/catch_all.hpp>
 
 
@@ -45,12 +44,12 @@ TEST_CASE("Initalization Test 4 - num_cells = 42, target_alive_fraction = 13/49"
     }
 }
 
-TEST_CASE("Initalization Test 4 - num_cells = 12, target_alive_fraction = 0.6", "[initial_cells]"){
+TEST_CASE("Initalization Test 5 - num_cells = 12, target_alive_fraction = 0.6", "[initial_cells]"){
     Cells test_arr = initial_cells(12, 0.6);
 
     double distribution_counter = 0;
     for (int i = 1; i <= 12; i ++){
-        distribution_counter += test_arr[i] - 13.0/49.0;
+        distribution_counter += test_arr[i] - 0.6;
         REQUIRE(abs(distribution_counter) <= 1);
     }
 }
