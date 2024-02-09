@@ -64,5 +64,6 @@ run_test_update: test_update
 run: gameof1d
 	./gameof1d
 
+.PHONY: all clean run_test_init run_test_output run_test_update run
 clean:
 	$(RM) $(OBJS)
